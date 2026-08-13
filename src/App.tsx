@@ -33,6 +33,21 @@ const structure = [
   { label: "Amplo estacionamento", icon: "🚗" },
 ];
 
+const navItems = [
+  { label: "Sobre nós", href: "#sobre" },
+  { label: "Eventos", href: "#eventos" },
+  { label: "Agenda", href: "#agenda" },
+  { label: "Projetos", href: "#projetos" },
+  { label: "Parceiros", href: "#parceiros" },
+];
+
+const agenda = [
+  { title: "Maanaim — Setembro", dates: "11, 12 e 13", href: "https://retiro-maanaim.onrender.com/fanpage/2026-09" },
+  { title: "Maanaim — Outubro", dates: "2, 3 e 4", href: "https://retiro-maanaim.onrender.com/fanpage/2026-10" },
+  { title: "Maanaim — Novembro", dates: "6, 7 e 8", href: null },
+  { title: "Maanaim — Dezembro", dates: "4, 5 e 6", href: null },
+];
+
 function WhatsAppLink({ className, children }: { className: string; children: React.ReactNode }) {
   return (
     <a
@@ -49,20 +64,33 @@ function WhatsAppLink({ className, children }: { className: string; children: Re
 export default function App() {
   return (
     <div className="bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-4 sm:px-10">
-        <p className="font-display text-sm font-bold tracking-wide text-white drop-shadow sm:text-base">
-          Estância Recanto de Paz
-        </p>
-        <WhatsAppLink className="rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-primary-dark shadow backdrop-blur transition hover:bg-white sm:text-sm">
-          Fale conosco
-        </WhatsAppLink>
+      <header className="fixed inset-x-0 top-0 z-20">
+        <div className="flex items-center justify-between px-6 py-4 sm:px-10">
+          <p className="font-display text-sm font-bold tracking-wide text-white drop-shadow sm:text-base">
+            Estância Recanto de Paz
+          </p>
+          <WhatsAppLink className="rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-primary-dark shadow backdrop-blur transition hover:bg-white sm:text-sm">
+            Fale conosco
+          </WhatsAppLink>
+        </div>
+        <nav className="flex justify-start gap-5 overflow-x-auto whitespace-nowrap border-t border-white/15 bg-primary-dark/40 px-6 py-2.5 backdrop-blur sm:justify-center sm:gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/85 transition hover:text-white sm:text-xs"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
       </header>
 
       {/* Hero */}
       <section className="relative flex min-h-screen items-end overflow-hidden">
         <img src="/fotos/espaco-01.jpg" alt="Entrada da Estância Recanto de Paz" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/60 to-primary-dark/10" />
-        <div className="relative px-6 pb-16 pt-40 sm:px-10 sm:pb-24">
+        <div className="relative px-6 pb-16 pt-48 sm:px-10 sm:pb-24">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-light">Assembleia de Deus · Rio Verde, GO</p>
           <h1 className="font-display mt-4 max-w-2xl text-4xl font-bold leading-[1.05] text-white sm:text-6xl">
             Um lugar reservado para encontros com Deus
@@ -73,7 +101,7 @@ export default function App() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#trabalhos"
+              href="#eventos"
               className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-primary-dark shadow-lg transition hover:brightness-105"
             >
               Conheça os retiros
@@ -89,7 +117,7 @@ export default function App() {
       </section>
 
       {/* Sobre */}
-      <section className="mx-auto max-w-4xl px-6 py-20 text-center sm:px-10">
+      <section id="sobre" className="mx-auto max-w-4xl scroll-mt-24 px-6 py-20 text-center sm:px-10">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Sobre a estância</p>
         <h2 className="font-display mt-3 text-3xl font-bold text-primary-dark sm:text-4xl">Um espaço para renovar</h2>
         <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
@@ -136,8 +164,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* Trabalhos realizados */}
-      <section id="trabalhos" className="px-6 py-20 sm:px-10">
+      {/* Eventos */}
+      <section id="eventos" className="scroll-mt-24 px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-5xl">
           <div className="mb-10 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Trabalhos realizados</p>
@@ -164,6 +192,57 @@ export default function App() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Agenda */}
+      <section id="agenda" className="scroll-mt-24 bg-surface px-6 py-20 sm:px-10">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-10 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Próximas datas</p>
+            <h2 className="font-display mt-3 text-3xl font-bold text-primary-dark sm:text-4xl">Agenda</h2>
+          </div>
+
+          <div className="space-y-3">
+            {agenda.map((item) => (
+              <div key={item.title} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-background px-6 py-4">
+                <div>
+                  <p className="font-display font-bold text-primary-dark">{item.title}</p>
+                  <p className="text-sm text-muted">Dias {item.dates}</p>
+                </div>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-primary px-5 py-2 text-xs font-semibold text-white transition hover:bg-primary-dark"
+                  >
+                    Inscreva-se
+                  </a>
+                ) : (
+                  <span className="rounded-full bg-border px-5 py-2 text-xs font-semibold text-muted">Inscrições em breve</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projetos */}
+      <section id="projetos" className="scroll-mt-24 px-6 py-20 text-center sm:px-10">
+        <div className="mx-auto max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Projetos</p>
+          <h2 className="font-display mt-3 text-3xl font-bold text-primary-dark sm:text-4xl">Projetos sociais</h2>
+          <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base">Em breve, mais informações sobre os projetos sociais realizados pela igreja.</p>
+        </div>
+      </section>
+
+      {/* Parceiros */}
+      <section id="parceiros" className="scroll-mt-24 bg-surface px-6 py-20 text-center sm:px-10">
+        <div className="mx-auto max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Parceiros</p>
+          <h2 className="font-display mt-3 text-3xl font-bold text-primary-dark sm:text-4xl">Nossos parceiros</h2>
+          <p className="mt-5 text-sm leading-relaxed text-muted sm:text-base">Em breve, conheça as igrejas e organizações parceiras.</p>
         </div>
       </section>
 
