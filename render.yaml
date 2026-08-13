@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: estancia-recanto-de-paz
+    runtime: static
+    buildCommand: pnpm install && pnpm build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
