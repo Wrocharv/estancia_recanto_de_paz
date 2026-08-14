@@ -7,8 +7,8 @@ const events = [
   {
     name: "Retiro Maanaim",
     text: "Retiro espiritual mensal, com momentos de adoração, ministração e comunhão.",
-    href: "https://retiro-maanaim.onrender.com/fanpage",
-    cta: "Ver próxima edição",
+    href: "#agenda",
+    cta: "Ver próximas datas",
   },
   {
     name: "Maturidade",
@@ -180,8 +180,7 @@ export default function App() {
                 {event.href ? (
                   <a
                     href={event.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(event.href.startsWith("#") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                     className="mt-5 inline-block rounded-full bg-primary px-5 py-2 text-center text-xs font-semibold text-white transition hover:bg-primary-dark"
                   >
                     {event.cta}
