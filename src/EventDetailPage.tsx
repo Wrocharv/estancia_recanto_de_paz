@@ -46,10 +46,19 @@ const content: Record<string, EventContent> = {
   },
   maturidade: {
     title: "Encontro Maturidade",
-    tagline: "Aprofundamento espiritual e crescimento na fé",
+    tagline: "O próximo passo depois do Maanaim",
     intro:
-      "O Maturidade é um encontro voltado a quem deseja amadurecer na caminhada com Deus — um tempo de ensino, reflexão e comunhão para dar passos mais firmes na fé.",
-    highlights: [],
+      "Se você já viveu o Retiro Maanaim, saiba: aquilo foi apenas o começo. O Maturidade é o próximo passo para quem deseja aprofundar sua caminhada com Deus, crescer espiritualmente e consolidar tudo aquilo que Ele começou durante o Maanaim. Se o Maanaim marcou a sua vida, o Maturidade é a oportunidade de ir além.",
+    highlights: [
+      {
+        title: "Tratamento e crescimento",
+        text: "Um tempo dedicado a tratar o que for necessário e crescer na caminhada, aprofundando o relacionamento com Deus além da experiência do Maanaim.",
+      },
+      {
+        title: "Fortalecimento e avanço",
+        text: "Consolidar tudo o que Deus começou no Maanaim, desenvolvendo um relacionamento mais profundo e consistente com Ele.",
+      },
+    ],
   },
 };
 
