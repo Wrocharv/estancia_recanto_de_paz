@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { Header, Footer } from "./shared";
 
+const MAANAIM_ORIGIN = "https://retiro-maanaim.onrender.com";
+
+function resolveMaanaimUrl(url: string | null) {
+  if (!url) return undefined;
+  return url.startsWith("http") ? url : `${MAANAIM_ORIGIN}${url}`;
+}
+
 type Testimonial = {
   id: number;
   name: string;
@@ -51,7 +58,7 @@ export default function EventDetailPage({ slug }: { slug: string }) {
   const event = content[slug];
 
   useEffect(() => {
-    fetch("https://retiro-maanaim.onrender.com/api/testimonials")
+    fetch(`${MAANAIM_ORIGIN}/api/testimonials`)
       .then((res) => res.json())
       .then(setTestimonials)
       .catch(() => setTestimonials([]));
@@ -113,7 +120,13 @@ export default function EventDetailPage({ slug }: { slug: string }) {
               {testimonials.map((t) => (
                 <div key={t.id} className="rounded-2xl border border-border bg-surface p-5">
                   {t.videoUrl && (
-                    <video src={t.videoUrl} controls playsInline poster={t.photoUrl ?? undefined} className="mb-3 aspect-[9/16] w-full rounded-xl bg-black object-cover" />
+                    <video
+                      src={resolveMaanaimUrl(t.videoUrl)}
+                      controls
+                      playsInline
+                      poster={resolveMaanaimUrl(t.photoUrl)}
+                      className="mb-3 aspect-[9/16] w-full rounded-xl bg-black object-cover"
+                    />
                   )}
                   {t.quote && <p className="text-sm italic leading-relaxed text-foreground">&ldquo;{t.quote}&rdquo;</p>}
                   <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted">{t.name}</p>
