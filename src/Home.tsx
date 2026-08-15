@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Header, Footer, WhatsAppLink } from "./shared";
 
 const events = [
@@ -38,6 +39,12 @@ const agenda = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+    if (!window.location.hash) return;
+    const el = document.querySelector(window.location.hash);
+    if (el) el.scrollIntoView({ behavior: "instant" as ScrollBehavior });
+  }, []);
+
   return (
     <div className="bg-background text-foreground">
       <Header />
