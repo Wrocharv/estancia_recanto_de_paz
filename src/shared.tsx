@@ -1,5 +1,7 @@
 export const whatsappNumber = "5564992446709";
 
+export const MAANAIM_ORIGIN = "https://retiro-maanaim.onrender.com";
+
 export function whatsappHref(message: string) {
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }

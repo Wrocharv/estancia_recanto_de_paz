@@ -1,5 +1,56 @@
-import { useEffect } from "react";
-import { Header, Footer, WhatsAppLink } from "./shared";
+import { useEffect, useState } from "react";
+import { Header, Footer, WhatsAppLink, MAANAIM_ORIGIN } from "./shared";
+
+type VenueBooking = {
+  id: number;
+  title: string;
+  startDate: string;
+  endDate: string;
+  status: "reservado" | "confirmado";
+};
+
+function formatDateShort(d: string) {
+  return new Date(`${d}T00:00:00`).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" });
+}
+
+function VenueAvailability() {
+  const [bookings, setBookings] = useState<VenueBooking[] | null>(null);
+
+  useEffect(() => {
+    fetch(`${MAANAIM_ORIGIN}/api/venue-bookings`)
+      .then((res) => res.json())
+      .then(setBookings)
+      .catch(() => setBookings([]));
+  }, []);
+
+  if (!bookings || bookings.length === 0) return null;
+
+  return (
+    <div className="mx-auto mt-8 max-w-md rounded-2xl border border-white/15 bg-white/5 p-5 text-left">
+      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent-light">Datas já ocupadas</p>
+      <p className="mt-1 text-xs text-white/60">Confira antes de escolher sua data — o que não estiver aqui, está livre.</p>
+      <ul className="mt-4 space-y-2.5">
+        {bookings.map((b) => (
+          <li key={b.id} className="flex items-center justify-between gap-3 text-sm">
+            <span className="text-white/85">
+              {formatDateShort(b.startDate)} — {formatDateShort(b.endDate)}
+            </span>
+            <span className="flex items-center gap-2 text-right">
+              <span className="truncate text-white/60">{b.title}</span>
+              <span
+                className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
+                  b.status === "confirmado" ? "bg-emerald-500/20 text-emerald-300" : "bg-accent/20 text-accent-light"
+                }`}
+              >
+                {b.status === "confirmado" ? "Confirmado" : "Reservado"}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 const events = [
   {
@@ -222,6 +273,8 @@ export default function Home() {
           >
             Consultar disponibilidade
           </WhatsAppLink>
+
+          <VenueAvailability />
         </div>
       </section>
 

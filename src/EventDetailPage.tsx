@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Header, Footer } from "./shared";
-
-const MAANAIM_ORIGIN = "https://retiro-maanaim.onrender.com";
+import { Header, Footer, MAANAIM_ORIGIN } from "./shared";
 
 function resolveMaanaimUrl(url: string | null) {
   if (!url) return undefined;
