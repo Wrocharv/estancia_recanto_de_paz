@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Header, Footer } from "./shared";
 
 const MAANAIM_ORIGIN = "https://retiro-maanaim.onrender.com";
@@ -55,7 +55,14 @@ const content: Record<string, EventContent> = {
 
 export default function EventDetailPage({ slug }: { slug: string }) {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const event = content[slug];
+
+  function handlePlay(index: number) {
+    videoRefs.current.forEach((v, i) => {
+      if (v && i !== index && !v.paused) v.pause();
+    });
+  }
 
   useEffect(() => {
     fetch(`${MAANAIM_ORIGIN}/api/testimonials`)
@@ -117,14 +124,18 @@ export default function EventDetailPage({ slug }: { slug: string }) {
           <div className="mx-auto max-w-4xl">
             <h2 className="font-display text-center text-2xl font-bold text-primary-dark sm:text-3xl">Quem já participou conta</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
-              {testimonials.map((t) => (
+              {testimonials.map((t, i) => (
                 <div key={t.id} className="rounded-2xl border border-border bg-surface p-5">
                   {t.videoUrl && (
                     <video
+                      ref={(el) => {
+                        videoRefs.current[i] = el;
+                      }}
                       src={resolveMaanaimUrl(t.videoUrl)}
                       controls
                       playsInline
                       poster={resolveMaanaimUrl(t.photoUrl)}
+                      onPlay={() => handlePlay(i)}
                       className="mb-3 aspect-[9/16] w-full rounded-xl bg-black object-cover"
                     />
                   )}
