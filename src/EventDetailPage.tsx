@@ -29,16 +29,20 @@ const content: Record<string, EventContent> = {
       "Inspirado em Gênesis 32:2, o Retiro Maanaim é um retiro espiritual mensal — três dias fora da rotina, dedicados a buscar a presença de Deus através de ministração, adoração e comunhão.",
     highlights: [
       {
-        title: "Renovação espiritual",
-        text: "Renovo na presença de Deus e aprofundamento do seu relacionamento, recebendo renovação na fé e o poder do Espírito Santo para caminhar em ousadia e propósito.",
+        title: "Cura de feridas emocionais",
+        text: "Um tempo para olhar para dores, traumas e marcas que ainda influenciam suas escolhas e relacionamentos, permitindo que Deus trate aquilo que você carrega há tanto tempo.",
       },
       {
-        title: "Descoberta do chamado",
-        text: "Ter clareza sobre o propósito de Deus para sua vida e começar a identificar e ativar os dons espirituais que o Senhor confiou a você.",
+        title: "Libertação de prisões",
+        text: "Um ambiente de ministração e oração para romper ciclos, confrontar aquilo que tem prendido sua vida e experimentar liberdade em Cristo.",
       },
       {
-        title: "Momentos profundos de adoração",
-        text: "Experimentar momentos intensos de poder e adoração na presença de Deus, renovando seu propósito com Sua obra.",
+        title: "Restauração da identidade",
+        text: "Um encontro com Deus para resgatar sua identidade, fortalecer sua fé e compreender quem você é n'Ele — deixando para trás aquilo que já não precisa fazer parte da sua história.",
+      },
+      {
+        title: "Um novo começo",
+        text: "Depois de tratar o que estava escondido, é hora de seguir diferente: com a fé fortalecida, o coração alinhado e clareza para viver um novo tempo. Você será conduzido a reconhecer sua identidade, compreender seu chamado e descobrir como servir no Reino através de uma ativação ministerial que ajudará você a identificar seus dons e se posicionar para viver o propósito de Deus.",
       },
     ],
   },
@@ -114,7 +118,7 @@ export default function EventDetailPage({ slug }: { slug: string }) {
         <section className="bg-surface px-6 py-16 sm:px-10">
           <div className="mx-auto max-w-4xl">
             <h2 className="font-display text-center text-2xl font-bold text-primary-dark sm:text-3xl">O que você vai vivenciar</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {event.highlights.map((item) => (
                 <div key={item.title} className="rounded-2xl border border-border bg-background p-5">
                   <p className="font-display font-bold text-primary-dark">{item.title}</p>
