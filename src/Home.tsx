@@ -78,7 +78,6 @@ const structure = [
   { label: "Alojamentos e quartos", icon: "🛏️" },
   { label: "Refeitório", icon: "🍽️" },
   { label: "Área de lazer e quadra", icon: "⚽" },
-  { label: "Energia solar própria", icon: "☀️" },
   { label: "Amplo estacionamento", icon: "🚗" },
 ];
 
