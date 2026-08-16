@@ -76,11 +76,11 @@ export default function EventDetailPage({ slug }: { slug: string }) {
   }
 
   useEffect(() => {
-    fetch(`${MAANAIM_ORIGIN}/api/testimonials`)
+    fetch(`${MAANAIM_ORIGIN}/api/testimonials?eventType=${slug}`)
       .then((res) => res.json())
       .then(setTestimonials)
       .catch(() => setTestimonials([]));
-  }, []);
+  }, [slug]);
 
   if (!event) {
     return (
