@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Header, Footer, WhatsAppLink, MAANAIM_ORIGIN, locacaoWhatsappNumber } from "./shared";
+import { Header, Footer, WhatsAppLink, MAANAIM_ORIGIN } from "./shared";
 
 type VenueBooking = {
   id: number;
@@ -272,7 +272,6 @@ export default function Home() {
           </p>
           <WhatsAppLink
             message="Olá! Gostaria de consultar disponibilidade da Estância Recanto de Paz para locação."
-            number={locacaoWhatsappNumber}
             className="mt-8 inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-primary-dark shadow-lg transition hover:brightness-105"
           >
             Consultar data disponível
