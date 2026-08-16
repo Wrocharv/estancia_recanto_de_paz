@@ -264,14 +264,17 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-light">Locação</p>
           <h2 className="font-display mt-3 text-3xl font-bold text-white sm:text-4xl">Disponível para o seu evento</h2>
           <p className="mt-5 text-sm leading-relaxed text-white/80 sm:text-base">
-            Nos períodos livres da agenda da igreja, a Estância Recanto de Paz também fica disponível para locação —
-            retiros, confraternizações, encontros e eventos especiais.
+            A Estância Recanto de Paz recebe retiros, confraternizações, encontros e eventos especiais em um
+            ambiente completamente preparado para isso.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">
+            Consulte a data do seu evento e verifique a disponibilidade na nossa agenda.
           </p>
           <WhatsAppLink
             message="Olá! Gostaria de consultar disponibilidade da Estância Recanto de Paz para locação."
             className="mt-8 inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-primary-dark shadow-lg transition hover:brightness-105"
           >
-            Consultar disponibilidade
+            Consultar data disponível
           </WhatsAppLink>
 
           <VenueAvailability />
