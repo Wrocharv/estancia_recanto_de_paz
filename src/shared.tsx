@@ -1,9 +1,10 @@
 export const whatsappNumber = "5564992446709";
+export const locacaoWhatsappNumber = "5564999883807";
 
 export const MAANAIM_ORIGIN = "https://retiro-maanaim.onrender.com";
 
-export function whatsappHref(message: string) {
-  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+export function whatsappHref(message: string, number: string = whatsappNumber) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 export const navItems = [
@@ -14,9 +15,19 @@ export const navItems = [
   { label: "Parceiros", href: "/#parceiros" },
 ];
 
-export function WhatsAppLink({ className, children, message }: { className: string; children: React.ReactNode; message: string }) {
+export function WhatsAppLink({
+  className,
+  children,
+  message,
+  number,
+}: {
+  className: string;
+  children: React.ReactNode;
+  message: string;
+  number?: string;
+}) {
   return (
-    <a href={whatsappHref(message)} target="_blank" rel="noopener noreferrer" className={className}>
+    <a href={whatsappHref(message, number)} target="_blank" rel="noopener noreferrer" className={className}>
       {children}
     </a>
   );
