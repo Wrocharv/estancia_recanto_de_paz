@@ -106,12 +106,18 @@ export default function EventDetailPage({ slug }: { slug: string }) {
 
       <section className="mx-auto max-w-2xl px-6 py-16 text-center sm:px-10">
         <p className="text-sm leading-relaxed text-muted sm:text-base">{event.intro}</p>
-        <a
-          href="/#agenda"
-          className="mt-8 inline-block rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-primary-dark"
-        >
-          Ver datas e se inscrever
-        </a>
+        {slug === "maturidade" ? (
+          <span className="mt-8 inline-block rounded-full border border-border px-7 py-3 text-sm font-semibold text-muted">
+            Datas em breve
+          </span>
+        ) : (
+          <a
+            href="/#agenda"
+            className="mt-8 inline-block rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-primary-dark"
+          >
+            Ver datas e se inscrever
+          </a>
+        )}
       </section>
 
       {event.highlights.length > 0 && (
@@ -169,12 +175,18 @@ export default function EventDetailPage({ slug }: { slug: string }) {
       )}
 
       <section className="bg-primary-dark px-6 py-16 text-center sm:px-10">
-        <a
-          href="/#agenda"
-          className="inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-primary-dark shadow-lg transition hover:brightness-105"
-        >
-          Ver próximas datas
-        </a>
+        {slug === "maturidade" ? (
+          <span className="inline-block rounded-full border border-white/30 px-7 py-3 text-sm font-semibold text-white/70">
+            Datas em breve
+          </span>
+        ) : (
+          <a
+            href="/#agenda"
+            className="inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-primary-dark shadow-lg transition hover:brightness-105"
+          >
+            Ver próximas datas
+          </a>
+        )}
       </section>
 
       <Footer />
