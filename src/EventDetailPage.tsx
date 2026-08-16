@@ -115,14 +115,23 @@ export default function EventDetailPage({ slug }: { slug: string }) {
       </section>
 
       {event.highlights.length > 0 && (
-        <section className="bg-surface px-6 py-16 sm:px-10">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="font-display text-center text-2xl font-bold text-primary-dark sm:text-3xl">O que você vai vivenciar</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {event.highlights.map((item) => (
-                <div key={item.title} className="rounded-2xl border border-border bg-background p-5">
-                  <p className="font-display font-bold text-primary-dark">{item.title}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
+        <section className="bg-surface px-6 py-20 sm:px-10">
+          <div className="mx-auto max-w-2xl">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-accent">A jornada</p>
+            <h2 className="font-display mt-2 text-center text-2xl font-bold text-primary-dark sm:text-3xl">O que você vai vivenciar</h2>
+            <div className="mt-14">
+              {event.highlights.map((item, i) => (
+                <div key={item.title} className="relative flex gap-6 pb-12 last:pb-0">
+                  {i < event.highlights.length - 1 && (
+                    <span className="absolute left-[19px] top-11 h-[calc(100%-1rem)] w-px bg-border" aria-hidden="true" />
+                  )}
+                  <span className="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-accent/50 bg-background text-sm font-bold text-accent">
+                    {i + 1}
+                  </span>
+                  <div className="pt-1.5">
+                    <p className="font-display text-lg font-bold text-primary-dark">{item.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
